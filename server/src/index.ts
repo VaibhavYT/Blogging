@@ -23,7 +23,7 @@ app.use('/api/blog',blogRoutes);
 mongoose.connect(dbConfig.MongoDB_Url).then(()=>{
     console.log('Connected to MongoDB');
     app.listen(PORT, () =>
-      console.log("Server running on http://localhost:${PORT}")
+      console.log(`Server running on http://localhost:${PORT}`)
     );
 }).catch((error)=>{
     console.log("MongoDB connection error:", error);
