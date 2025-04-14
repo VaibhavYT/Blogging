@@ -26,4 +26,59 @@ export const createBlog = async (req: Request, res: Response) => {
   }
 };
 
-// Add other controller functions (getBlogs, getBlogById, etc.) that call corresponding service functions
+
+
+export const getBlogs = async (req: Request, res: Response) => {
+  try {
+    const blog = await blogService.getBlogPosts();
+    res.status(201).json(blog);
+  } catch (error) {
+    // Handle errors (e.g., validation errors from service)
+    const errorMessage =
+      error instanceof Error ? error.message : "Failed to get blog post";
+    res.status(400).json({ message: errorMessage });
+  }
+};
+
+
+export const getBlogById =  async(req: Request, res: Response)=>{
+   try {
+     const id = req.params.id;
+     const blog = await blogService.getBlogPostById(id);
+     res.status(201).json(blog);
+   } catch (error) {
+     // Handle errors (e.g., validation errors from service)
+     const errorMessage =
+       error instanceof Error ? error.message : "Failed to get blog post";
+     res.status(400).json({ message: errorMessage });
+   }
+}
+
+export const updateBlog = async (req: Request, res: Response)=>{
+    try {
+      const id = req.params.id;
+      const data = req.body;
+      await blogService.updateBlogPost(id,data);
+      res.status(201).json({ message: "Blog Updated Successfully" });
+    } catch (error) {
+      // Handle errors (e.g., validation errors from service)
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to Update blog post";
+      res.status(400).json({ message: errorMessage });
+    }
+}
+
+
+
+export const deleteBlog = async (req:Request, res:Response)=>{
+    try {
+      const id = req.params.id;
+      await blogService.deleteBlogPost(id);
+      res.status(201).json({message:"Blog deleted Successfully"});
+    } catch (error) {
+      // Handle errors (e.g., validation errors from service)
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to delete blog post";
+      res.status(400).json({ message: errorMessage });
+    }
+}
