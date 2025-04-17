@@ -37,9 +37,8 @@ const UpdateBlog = () => {
       setIsFetching(true);
       setError(null);
       try {
-        // Convert id to number if your API expects a number
-        // If your API uses string IDs (like MongoDB _id), keep it as string
-        const blogData = await fetchBlogByID(Number(id)); // Convert string ID to number
+        // Your API expects a string ID (like MongoDB _id)
+        const blogData = await fetchBlogByID(id); // Use the ID as a string
         setOriginalBlog(blogData);
         // Pre-fill the form with fetched data
         reset({
@@ -90,8 +89,8 @@ const UpdateBlog = () => {
         tags: tagsArray,
       };
 
-      // Assuming updateBlog takes id (number) and the data object
-      const updatedBlogData = await updateBlog(Number(id), blogDataToUpdate); // Convert id to number
+      // Assuming updateBlog takes id (string) and the data object
+      const updatedBlogData = await updateBlog(id, blogDataToUpdate); // Pass id as string
       console.log("Blog Updated:", updatedBlogData);
       setSuccessMessage("Blog Updated Successfully!");
       // Optionally reset the form to the newly updated values
