@@ -20,7 +20,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/api/blog',blogRoutes);
 
-mongoose.connect(dbConfig.MongoDB_Url).then(()=>{
+mongoose.connect(dbConfig.MongoDB_Url as string).then(()=>{
     console.log('Connected to MongoDB');
     app.listen(PORT, () =>
       console.log(`Server running on http://localhost:${PORT}`)

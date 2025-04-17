@@ -1,12 +1,8 @@
-import Home from "./pages/Home/Home";
 import "./App.css";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-  return (
-    <>
-      <Home blogId={0} />
-    </>
-  );
+  return <AppRoutes />;
 }
 
 export default App;

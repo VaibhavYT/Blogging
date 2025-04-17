@@ -10,7 +10,7 @@ export interface Blog {
 
 
 const apiClient: AxiosInstance = axios.create({
-  baseURL: " http://localhost:3000",
+  baseURL: "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
@@ -67,9 +67,9 @@ export const createBlog = async (blog: Omit<Blog, 'id'>): Promise<Blog> =>
 
 
 
-export const updateBlog = async (id:number):Promise<Blog>=>{
+export const updateBlog = async (id:number,data:Partial<Blog>):Promise<Blog>=>{
     try {
-        const response :AxiosResponse<Blog> = await apiClient.put(`/${id}`);
+        const response :AxiosResponse<Blog> = await apiClient.put(`/${id}`,data);
         return response.data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
