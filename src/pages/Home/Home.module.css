@@ -1,0 +1,37 @@
+/* filepath: v:\Web Development\Projects\Blogging\src\pages\Home\Home.module.css */
+.fab {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 32px;
+    background: #646cff;
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* Slightly enhanced shadow */
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    /* Center the '+' sign */
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Smooth transition */
+}
+
+.fab:hover {
+    background-color: #535bf2;
+    /* Darker shade on hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    /* Larger shadow on hover */
+}
+
+.fab:active {
+    background-color: #454ce1;
+    /* Even darker when clicked */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    /* Smaller shadow when clicked */
+}

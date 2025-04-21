@@ -1,6 +1,8 @@
+import dotenv from "dotenv";
+dotenv.config();
 
+import { createClient } from "@supabase/supabase-js";
 
-export default {
-  MongoDB_Url:
-    process.env.MongoDB_Url || "mongodb://localhost:27017/mydatabase",
-};
+const supabaseUrl = process.env.SUPABASE_URL as string;
+const supabaseKey = process.env.SUPABASE_KEY as string;
+export const supabase = createClient(supabaseUrl, supabaseKey);
